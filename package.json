@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "@ghostery/adblocker": "^2.3.1",
+    "@ghostery/adblocker-content": "^2.5.0",
+    "@ghostery/adblocker-puppeteer": "^2.5.0",
     "axios": "^1.7.9",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
@@ -31,5 +33,14 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
-  }
+  },
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wamo007/HuuRadar_Backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wamo007/HuuRadar_Backend/issues"
+  },
+  "homepage": "https://github.com/wamo007/HuuRadar_Backend#readme"
 }

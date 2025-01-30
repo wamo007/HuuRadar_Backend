@@ -12,7 +12,9 @@ const queryRouter = require('./routes/queryRoutes')
 
 const corsOptions = {
     credentials: true,
-    origin: 'https://huuradar.org',
+    origin: 'https://www.huuradar.org',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }
 
 mongoose.connect(process.env.MONGO_URL)
@@ -23,6 +25,7 @@ const app = express()
 const PORT = 8089
 
 app.use(cors(corsOptions))
+app.options('*', cors(corsOptions))
 app.use(cookieParser())
 app.use(express.json({ limit: '50mb' }))
 app.use(express.static(path.join(__dirname, 'public')))
