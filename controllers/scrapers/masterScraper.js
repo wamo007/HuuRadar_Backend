@@ -14,6 +14,7 @@ let browser
 const getBrowser = async () => {
     if (!browser) {
         browser = await puppeteer.launch({
+	    executablePath: '/usr/bin/chromium-browser',
             headless: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-notifications'],
         })
