@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>New Listings</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    style="
+      margin: 0;
+      font-family: 'Outfit', Arial, sans-serif;
+      background: #ffffff;
+      font-size: 14px;
+    "
+  >
+    <div
+      style="
+        max-width: 680px;
+        width: 100%;
+        margin: 0 auto;
+        font-size: 14px;
+        color: #1f2937;
+      "
+    >
+      <table
+        style="
+          width: 100%;
+          padding: 45px 15px 60px;
+          background-color: #f4f7ff;
+          background-image: url('cid:bg_email');
+          background-repeat: no-repeat;
+          background-size: 800px 452px;
+          background-position: top center;
+        "
+        role="presentation"
+      >
+        <tr>
+          <td
+            style="
+              padding: 45px 3px 60px;
+            "
+          >
+            <header>
+              <table
+                style="
+                  width: 100%;
+                  background-color: #ffffff3d;
+                  border-radius: 30px;
+                  margin: 0 auto;
+                "
+                role="presentation"
+              >
+                <tr>
+                  <td style="text-align: center; padding: 10px;">
+                    <img
+                      alt="Logo"
+                      src="cid:logo"
+                      height="50px"
+                      style="display: inline-block; vertical-align: middle;"
+                    />
+                    <h1
+                      style="
+                        display: inline-block;
+                        margin: 0;
+                        margin-left: 10px;
+                        font-size: 24px;
+                        letter-spacing: 2px;
+                        color: #1f2937;
+                        vertical-align: middle;
+                      "
+                    >
+                      HUURADAR
+                    </h1>
+                  </td>
+                </tr>
+              </table>
+            </header>
+
+            <main>
+              <table
+                style="
+                  width: 100%;
+                  background: #ffffff;
+                  border-radius: 30px;
+                  margin: 0 auto;
+                  margin-top: 70px;
+                  margin-bottom: -10px;
+                  padding: 20px 20px 20px;
+                "
+                role="presentation"
+              >
+                <tr> 
+                  <td style="text-align: center;">
+                    <p
+                      style="
+                        margin: 0;
+                        margin-bottom: 10px;
+                        font-size: 24px;
+                        font-weight: 500;
+                      "
+                    >
+                      Hi {{name}},
+                    </p>
+                    <p
+                      style="
+                        margin: 0;
+                        margin-bottom: 10px;
+                        font-size: 18px;
+                        font-weight: 500;
+                        letter-spacing: 0.56px;
+                      "
+                    >
+                      Here are the new listings on the rental websites:
+                    </p>
+                    {{#newEntries}}
+                    <div style="padding: 10px; margin-bottom: 20px; border-radius: 10px; background-color: whitesmoke;">
+                      <a href="{{link}}">
+                        <img src="{{img}}" alt="{{heading}}" style="width: 180px; height: 120px; border-radius: 10px; object-fit: cover;">
+                      </a>
+                      <div>
+                        <a href="{{link}}" style="text-decoration: none; color: black;">
+                          <h2 style="margin-bottom: 7px;">{{heading}}</h2>
+                          <h3 style="margin: 0;">{{address}}</h3>
+                        </a>
+                        <div>
+                          <h3>{{price}}</h3>
+                          <h4>Size: {{size}}</h4>
+                          <a href="{{sellerLink}}" style="text-decoration: none; color: black;">
+                              Seller: {{seller}}
+                          </a>
+                          <p style="font-size: 12px;">Provider: {{provider}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    {{/newEntries}}
+                  </td>
+                </tr>
+              </table>
+
+              <p
+                style="
+                  max-width: 400px;
+                  margin: 0 auto;
+                  margin-top: 90px;
+                  text-align: center;
+                  font-weight: 500;
+                  color: #8c8c8c;
+                "
+              >
+                Need help? Ask at
+                <a
+                  href="mailto:support@huuradar.org"
+                  style="color: #499fb6; text-decoration: none;"
+                  >support@huuradar.org</a
+                >
+              </p>
+            </main>
+
+            <footer
+              style="
+                width: 100%;
+                max-width: 490px;
+                margin: 0 auto;
+                margin-top: 20px;
+                border-top: 1px solid #e6ebf1;
+              "
+            >
+              <table
+                style="
+                  width: 100%;
+                  text-align: center;
+                  margin: 0 auto;
+                  font-family: 'Outfit', sans-serif;
+                "
+                role="presentation"
+              >
+                <tr>
+                  <td>
+                    <p
+                      style="
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #434343;
+                        margin: 40px 0 8px;
+                      "
+                    >
+                      HUURADAR
+                    </p>
+                    <p style="margin: 0; color: #434343;">
+                      Tilburg, The Netherlands.
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-top: 16px;">
+                    <a href="https://github.com/wamo007" target="_blank" style="display: inline-block;">
+                      <img width="30px" alt="Github" src="cid:github" />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/shamil-iskandarov-326225293"
+                      target="_blank"
+                      style="display: inline-block; margin-left: 8px;"
+                    >
+                      <img width="30px" alt="LinkedIn" src="cid:linkedin" />
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p style="margin: 16px 0 0; color: #434343;">
+                      Copyright © 2024 HUURADAR. All rights reserved.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </footer>
+          </td>
+        </tr>
+      </table>  
+    </div>
+  </body>
+</html>
