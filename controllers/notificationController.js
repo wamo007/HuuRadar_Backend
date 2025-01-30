@@ -320,6 +320,6 @@ const compareQuery = async () => {
 
 // compareQuery()
 
-// cron.schedule('*/30 * * * *', compareQuery)
+cron.schedule('*/45 * * * *', compareQuery)
 
 module.exports = saveQuery
