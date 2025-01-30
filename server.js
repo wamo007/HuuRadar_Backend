@@ -12,7 +12,7 @@ const queryRouter = require('./routes/queryRoutes')
 
 const corsOptions = {
     credentials: true,
-    origin: 'https://huuradar.org',
+    origin: 'https://www.huuradar.org',
 }
 
 mongoose.connect(process.env.MONGO_URL)
