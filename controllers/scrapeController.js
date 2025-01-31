@@ -6,8 +6,6 @@ const kamernetScraper = require('./scrapers/kamernet')
 const huurwoningenScraper = require('./scrapers/huurwoningen')
 const kamerNLScraper = require('./scrapers/kamerNL')
 
-const sortProviders = ['funda', 'hAnywhere', 'kamernet', 'kamerNL', 'pararius', 'huurwoningen', 'rentola']
-
 const scrapeController = async (req, res) => {
     const city = req.body.city
     const radius = req.body.radius
@@ -31,8 +29,6 @@ const scrapeController = async (req, res) => {
         rentola: rentolaScraper,
     }
 
-    console.log(`Processing the request for ${city}, ${radius} km, ${selectedProviders.sort((a, b) => sortProviders.indexOf(a) - sortProviders.indexOf(b))}, ${sortGlobal}, ${minPrice} - ${maxPrice}. Time: ${new Date()}`)
-
     res.setHeader('Content-Type', 'application/json')
 
     try {
@@ -44,9 +40,7 @@ const scrapeController = async (req, res) => {
 
         res.end()
 
-        console.log(`The request for ${city} has been completed on ${new Date()}`)
     } catch (error) {
-        console.error('Error finding information on the websites:', error)
         res.status(500)
         .json({ success: false, error: 'Failed to find info on the websites.' })
     }

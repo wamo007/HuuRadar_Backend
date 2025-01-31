@@ -72,7 +72,6 @@ const hAnywhereScraper = async (city, radius, sortGlobal, minPrice, maxPrice) =>
                 return (btn && (btn.textContent !== '')) ? parseInt(btn.textContent, 10) : NaN
             })
             .filter((num) => !isNaN(num))
-        console.log(totalPages)
         return (totalPages.length > 0) ? Math.max(...totalPages) : 1
     })
     

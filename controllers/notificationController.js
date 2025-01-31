@@ -111,15 +111,6 @@ const compareQuery = async () => {
                 (oldEntry) => !updatedData.some((newEntry) => newEntry.heading === oldEntry.heading)
             )
 
-            // const updatedEntries = updatedData.filter((newEntry) => {
-            //     const oldEntry = query.queryData.find((oldEntry) => oldEntry.link === newEntry.link)
-            //     return oldEntry && !_.isEqual(oldEntry, newEntry)
-            // })
-
-            // console.log('New entries: ', newEntries)
-            // console.log('Removed entries: ', removedEntries)
-            // console.log('Updated entries: ', updatedEntries)
-
             if (newEntries.length) {
                 try {
                     const emailNewEntriesTemplatePath = path.join(__dirname, '../config', 'NewEntries.html')
@@ -152,7 +143,7 @@ const compareQuery = async () => {
                     emailNewEntriesTemplate = emailNewEntriesTemplate
                         .replace('{{name}}', query.name)
                         .replace(/{{#newEntries}}[\s\S]*?{{\/newEntries}}/, mailEntries)
-                    console.log('Processed HTML:', emailNewEntriesTemplate)
+                    // console.log('Processed HTML:', emailNewEntriesTemplate)
     
                     const mailOptions = {
                         from: process.env.SENDER_EMAIL,
@@ -195,9 +186,9 @@ const compareQuery = async () => {
                     },
                     { new: true }
                 )
-                console.log(`Query updated for email: ${query.email}. ID: ${query._id}`)
+                // console.log(`Query updated for email: ${query.email}. ID: ${query._id}`)
             } else {
-                console.log(`No changes for query: ${query._id}`);
+                // console.log(`No changes for query: ${query._id}`);
             }
         }
     } catch (error) {
@@ -222,15 +213,6 @@ const compareQuery = async () => {
                 const removedEntries = query.queryData.filter(
                     (oldEntry) => !updatedData.some((newEntry) => newEntry.heading === oldEntry.heading)
                 )
-
-                // const updatedEntries = updatedData.filter((newEntry) => {
-                //     const oldEntry = query.queryData.find((oldEntry) => oldEntry.link === newEntry.link)
-                //     return oldEntry && !_.isEqual(oldEntry, newEntry)
-                // })
-
-                // console.log('New entries: ', newEntries)
-                // console.log('Removed entries: ', removedEntries)
-                // console.log('Updated entries: ', updatedEntries)
 
                 if (newEntries.length) {
                     try {
@@ -264,7 +246,7 @@ const compareQuery = async () => {
                         emailNewEntriesTemplate = emailNewEntriesTemplate
                             .replace('{{name}}', query.name)
                             .replace(/{{#newEntries}}[\s\S]*?{{\/newEntries}}/, mailEntries)
-                        console.log('Processed HTML:', emailNewEntriesTemplate)
+                        // console.log('Processed HTML:', emailNewEntriesTemplate)
         
                         const mailOptions = {
                             from: process.env.SENDER_EMAIL,
@@ -307,9 +289,9 @@ const compareQuery = async () => {
                         },
                         { new: true }
                     )
-                    console.log(`Query updated for email: ${query.email}. ID: ${query._id}`)
+                    // console.log(`Query updated for email: ${query.email}. ID: ${query._id}`)
                 } else {
-                    console.log(`No changes for query: ${query._id}`);
+                    // console.log(`No changes for query: ${query._id}`);
                 }
             }
         } catch (error) {
@@ -317,8 +299,6 @@ const compareQuery = async () => {
         }
     }
 }
-
-// compareQuery()
 
 cron.schedule('*/45 * * * *', compareQuery)
 

@@ -58,7 +58,6 @@ const fundaScraper = async (city, radius, sortGlobal, minPrice, maxPrice) => {
                 return a ? parseInt(a.textContent.trim(), 10) : NaN
             })
             .filter((num) => !isNaN(num))
-        console.log(totalPages)
         return (totalPages.length > 0) ? Math.max(...totalPages) : 1
     })
         

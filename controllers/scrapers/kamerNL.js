@@ -50,7 +50,7 @@ const kamerNLScraper  = async (city, radius, sortGlobal, minPrice, maxPrice) => 
     }
 
     if (!minPrice && !maxPrice) {
-        queries = `/en/rent/?q=${city}&type=&created=3&distance=${radiusKamerNL(radius)}&sort=${sortKamerNL(sortGlobal)}&min_price=${minPriceKamerNL(minPrice)}&max_price=${maxPriceKamerNL(maxPrice)}`
+        queries = `/en/rent/?q=${city}&type=&created=3&distance=${radiusKamerNL(radius)}&sort=${sortKamerNL(sortGlobal)}`
     } else if (!minPrice && maxPrice) {
         queries = `/en/rent/?q=${city}&type=&created=3&distance=${radiusKamerNL(radius)}&sort=${sortKamerNL(sortGlobal)}&max_price=${maxPriceKamerNL(maxPrice)}`
     } else if (minPrice && !maxPrice) {
@@ -87,7 +87,6 @@ const kamerNLScraper  = async (city, radius, sortGlobal, minPrice, maxPrice) => 
                 return (page && (page.textContent !== '')) ? parseInt(page.textContent, 10) : NaN
             })
             .filter((num) => !isNaN(num))
-        console.log(totalPages)
         return (totalPages.length > 0) ? Math.max(...totalPages) : 1
     })
     
