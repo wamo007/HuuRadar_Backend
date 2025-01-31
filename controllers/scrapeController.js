@@ -14,45 +14,44 @@ const scrapeController = async (req, res) => {
     const { city, radius, selectedProviders, sortGlobal, minPrice, maxPrice } = req.body
 
     if (!city) {
-        return res.status(400)
-        .send({ error: 'Please, provide information about the city.' })
+        return res.status(400).send({ error: 'Please, provide information about the city.' })
     }
-
-    // console.log(`Processing the request for ${city}, ${radius} km, ${selectedProviders}, ${sortGlobal}, ${minPrice} - ${maxPrice}. Time: ${new Date()}`)
 
     res.setHeader('Content-Type', 'application/json')
 
     try {
-        let completedProviders = 0
-        const totalProviders = workerServers.reduce((acc, worker) => {
-            const scrapersToRun = worker.scrapers.filter(scraper => selectedProviders.includes(scraper))
-            return acc + (scrapersToRun.length > 0 ? 1 : 0)
-        }, 0)
+        const activeWorkers = workerServers.filter(worker =>
+            worker.scrapers.some(scraper => selectedProviders.includes(scraper))
+        )
 
-        workerServers.forEach(worker => {
-            const scrapersToRun = worker.scrapers.filter(scraper => selectedProviders.includes(scraper))
-            if (scrapersToRun.length > 0) {
-                axios.post(worker.url, {
-                    scrapers: scrapersToRun,
-                    city,
-                    radius,
-                    sortGlobal,
-                    minPrice,
-                    maxPrice,
-                }).then(workerResponse => {
-                    res.write(JSON.stringify(workerResponse.data) + '\n')
-                    completedProviders++
-                    if (completedProviders === totalProviders) {
-                        res.end()
-                        // console.log(`Time of completion for ${city} - ${new Date()}`)
-                    }
-                })
+        // Create an array of promises for all active workers
+        const workerPromises = activeWorkers.map(worker =>
+            axios.post(worker.url, {
+                scrapers: worker.scrapers.filter(scraper => selectedProviders.includes(scraper)),
+                city,
+                radius,
+                sortGlobal,
+                minPrice,
+                maxPrice,
+            })
+        )
+
+        // allSettled to handle all worker requests not sequentially but concurrently
+        const results = await Promise.allSettled(workerPromises)
+
+        // then res.write as soon as available
+        results.forEach(result => {
+            if (result.status === 'fulfilled') {
+                res.write(JSON.stringify(result.value.data) + '\n')
+            } else {
+                console.error('Worker failed:', result.reason)
             }
         })
+
+        res.end()
     } catch (error) {
         console.error('Error finding information on the websites:', error)
-        res.status(500)
-        .json({ success: false, error: 'Failed to find info on the websites.' })
+        res.status(500).json({ success: false, error: 'Failed to find info on the websites.' })
     }
 }
 
