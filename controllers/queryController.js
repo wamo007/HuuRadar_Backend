@@ -16,8 +16,8 @@ const getQueries = async (req, res) => {
 // Delete a query by ID
 const deleteQuery = async (req, res) => {
     try {
-        const { queryId } = req.params
-        await Query.findByIdAndDelete(queryId)
+        const { id } = req.params
+        await Query.findByIdAndDelete(id)
         res.json({ success: true, message: "Query deleted successfully!" })
     } catch (error) {
         res.json({ error: error.message })
