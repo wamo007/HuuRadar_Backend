@@ -35,6 +35,13 @@ const saveQuery = async (req, res) => {
             })
         }
 
+        const sameQueryCity = await Query.findOne({ email, city })
+        if (sameQueryCity) {
+            return res.json({
+                error: 'You have already saved a query for the same city'
+            })
+        }
+
         const parsedData = JSON.parse(responseData)
         const queryData = []
 
