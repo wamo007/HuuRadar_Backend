@@ -138,7 +138,7 @@ const compareQuery = async () => {
                                   <h3 style="text-decoration: none; color: black;">${entry.price}</h3>
                                   <h4 style="text-decoration: none; color: black;">Size: ${entry.size}</h4>
                                   <a href="${entry.sellerLink}" style="text-decoration: none; color: black;">
-                                      Seller: ${entry.seller}
+                                      ${entry.seller}
                                   </a>
                                   <p style="font-size: 12px;">Provider: ${entry.provider.charAt(0).toUpperCase() + entry.provider.slice(1)}</p>
                                 </div>
