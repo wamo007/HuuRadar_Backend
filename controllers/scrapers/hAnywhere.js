@@ -82,7 +82,7 @@ const hAnywhereScraper = async (city, radius, sortGlobal, minPrice, maxPrice) =>
         data = await page.evaluate(() => {
             const address = document.querySelector('div.css-de8hus-infoSection h1')?.textContent.trim().split(' ').slice(-2, -1).join(' ') || ''
             return Array.from(document.querySelectorAll(
-              'div.css-wp5dsn-container div.css-jdbo8x-HousingAnywhereColorProvider-root a'
+              'div.css-wp5dsn-container a'
               )).map((a) => {
                 const img = a.querySelector("img")?.getAttribute('src') || ''
                 const heading = a.querySelector('div[data-test-locator="ListingCardPropertyInfo"] span')?.textContent.trim() || ''
