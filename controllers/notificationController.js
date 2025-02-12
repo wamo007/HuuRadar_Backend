@@ -140,7 +140,7 @@ const compareQuery = async () => {
                                   <a href="${entry.sellerLink}" style="text-decoration: none; color: black;">
                                       ${entry.seller}
                                   </a>
-                                  <p style="font-size: 12px;">Provider: ${entry.provider.charAt(0).toUpperCase() + entry.provider.slice(1)}</p>
+                                  <p style="font-size: 12px;">Provider: ${entry.provider ? (entry.provider.charAt(0).toUpperCase() + entry.provider.slice(1)) : ''}</p>
                                 </div>
                               </div>
                             </div>
@@ -243,7 +243,7 @@ const compareQuery = async () => {
                                     <a href="${entry.sellerLink}" style="text-decoration: none; color: black;">
                                         Seller: ${entry.seller}
                                     </a>
-                                    <p style="font-size: 12px;">Provider: ${entry.provider.charAt(0).toUpperCase() + entry.provider.slice(1)}</p>
+                                    <p style="font-size: 12px;">Provider: ${entry.provider ? (entry.provider.charAt(0).toUpperCase() + entry.provider.slice(1)) : ''}</p>
                                     </div>
                                 </div>
                                 </div>
